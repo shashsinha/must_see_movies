@@ -1,0 +1,62 @@
+<!-- Form movie start -->
+<%= form_with(model: @movie, local: true) do |f| %>
+<!-- Form movie end -->
+
+  <!-- Label and input for movie_title start -->
+  <div class="form-group">
+    <%= f.label :movie_title %>
+
+    <!-- Input for movie_title start -->
+    <%= f.text_field :movie_title, class: "form-control" %>
+    <!-- Input for movie_title end -->
+  </div>
+  <!-- Label and input for movie_title end -->
+
+  <!-- Label and input for release_date start -->
+  <div class="form-group">
+    <%= f.label :release_date %>
+
+    <!-- Input for release_date start -->
+    <%= f.date_select :release_date, class: "form-control" %>
+    <!-- Input for release_date end -->
+  </div>
+  <!-- Label and input for release_date end -->
+
+  <!-- Label and input for movie_duration start -->
+  <div class="form-group">
+    <%= f.label :movie_duration %>
+
+    <!-- Input for movie_duration start -->
+    <%= f.text_field :movie_duration, class: "form-control" %>
+    <!-- Input for movie_duration end -->
+  </div>
+  <!-- Label and input for movie_duration end -->
+
+  <!-- Label and input for movie_description start -->
+  <div class="form-group">
+    <%= f.label :movie_description %>
+
+    <!-- Input for movie_description start -->
+    <%= f.text_field :movie_description, class: "form-control" %>
+    <!-- Input for movie_description end -->
+  </div>
+  <!-- Label and input for movie_description end -->
+
+  <!-- Label and input for director_id start -->
+  <!-- Input for director_id start -->
+  <%= f.hidden_field :director_id, value: @director.id %>
+  <!-- Input for director_id end -->
+  <!-- Label and input for director_id end -->
+
+  <!-- Label and input for movie_image start -->
+  <div class="form-group">
+    <%= f.label :movie_image %>
+
+    <!-- Input for movie_image start -->
+    <%= f.text_field :movie_image, class: "form-control" %>
+    <!-- Input for movie_image end -->
+  </div>
+  <!-- Label and input for movie_image end -->
+
+  <%= f.submit "Create movie", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
