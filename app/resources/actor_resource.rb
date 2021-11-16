@@ -10,6 +10,9 @@ class ActorResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :starred_in,
+             resource: MovieResource
+
   # Indirect associations
 
 end
