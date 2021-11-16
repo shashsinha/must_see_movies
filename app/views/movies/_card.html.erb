@@ -32,7 +32,9 @@
 
       <dt>Movie image</dt>
       <!-- Display movie_image start -->
-      <dd><%= movie.movie_image %></dd>
+      <dd>
+        <%= cl_image_tag @movie.movie_image, class: "img-fluid" %>
+      </dd>
       <!-- Display movie_image end -->
 
     </dl>

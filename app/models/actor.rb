@@ -1,4 +1,6 @@
 class Actor < ApplicationRecord
+  mount_uploader :actor_image, ActorImageUploader
+
   # Direct associations
 
   belongs_to :starred_in,
