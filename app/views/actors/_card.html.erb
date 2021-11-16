@@ -12,7 +12,11 @@
 
       <dt>Starred in</dt>
       <!-- Display starred_in_id start -->
-      <dd><%= actor.starred_in_id %></dd>
+      <dd>
+        <% if @actor.starred_in.present? %>
+          <%= link_to actor.starred_in, actor.starred_in %>
+        <% end %>
+      </dd>
       <!-- Display starred_in_id end -->
 
       <dt>Actor dob</dt>
