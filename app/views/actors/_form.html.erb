@@ -42,7 +42,7 @@
 
     <%= f.label :starred_in_id %>
     <!-- Input for starred_in_id start -->
-    <%= f.number_field :starred_in_id, class: starred_in_class, placeholder: "Enter starred in" %>
+    <%= f.collection_select :starred_in_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for starred_in_id end -->
     <% if starred_in_was_invalid %>
       <% actor.errors.full_messages_for(:starred_in).each do |message| %>
