@@ -11,6 +11,8 @@ class MovieResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :reviews
+
   has_many   :actors,
              foreign_key: :starred_in_id
 
