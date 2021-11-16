@@ -1,6 +1,9 @@
 class Movie < ApplicationRecord
   # Direct associations
 
+  has_many   :reviews,
+             :dependent => :destroy
+
   has_many   :actors,
              :foreign_key => "starred_in_id",
              :dependent => :destroy
