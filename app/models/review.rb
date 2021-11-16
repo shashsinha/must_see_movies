@@ -2,10 +2,10 @@ class Review < ApplicationRecord
   # Direct associations
 
   belongs_to :movie,
-             :counter_cache => true
+             counter_cache: true
 
   belongs_to :user,
-             :counter_cache => true
+             counter_cache: true
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Review < ApplicationRecord
   def to_s
     user.to_s
   end
-
 end

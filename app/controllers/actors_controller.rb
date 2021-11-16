@@ -1,15 +1,14 @@
 class ActorsController < ApplicationController
-  before_action :set_actor, only: [:show, :edit, :update, :destroy]
+  before_action :set_actor, only: %i[show edit update destroy]
 
   # GET /actors
   def index
     @q = Actor.ransack(params[:q])
-    @actors = @q.result(:distinct => true).includes(:starred_in).page(params[:page]).per(10)
+    @actors = @q.result(distinct: true).includes(:starred_in).page(params[:page]).per(10)
   end
 
   # GET /actors/1
-  def show
-  end
+  def show; end
 
   # GET /actors/new
   def new
@@ -17,17 +16,16 @@ class ActorsController < ApplicationController
   end
 
   # GET /actors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /actors
   def create
     @actor = Actor.new(actor_params)
 
     if @actor.save
-      message = 'Actor was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Actor was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @actor, notice: message
       end
@@ -39,7 +37,7 @@ class ActorsController < ApplicationController
   # PATCH/PUT /actors/1
   def update
     if @actor.update(actor_params)
-      redirect_to @actor, notice: 'Actor was successfully updated.'
+      redirect_to @actor, notice: "Actor was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,23 @@ class ActorsController < ApplicationController
   def destroy
     @actor.destroy
     message = "Actor was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to actors_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_actor
-      @actor = Actor.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def actor_params
-      params.require(:actor).permit(:actor_name, :starred_in_id, :actor_dob, :actor_bio, :actor_image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_actor
+    @actor = Actor.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def actor_params
+    params.require(:actor).permit(:actor_name, :starred_in_id, :actor_dob,
+                                  :actor_bio, :actor_image)
+  end
 end

@@ -4,8 +4,8 @@ class Actor < ApplicationRecord
   # Direct associations
 
   belongs_to :starred_in,
-             :class_name => "Movie",
-             :counter_cache => true
+             class_name: "Movie",
+             counter_cache: true
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Actor < ApplicationRecord
   def to_s
     actor_name
   end
-
 end

@@ -21,5 +21,4 @@ class MovieResource < ApplicationResource
              foreign_key: :starred_in_id
 
   # Indirect associations
-
 end
